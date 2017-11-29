@@ -3,6 +3,7 @@ FROM frolvlad/alpine-glibc:alpine-3.6
 MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
 ENV PORT=34197 \
+    RCON_PORT=27015 \
     VERSION=0.15.40 \
     SHA1=f79a975f6b8c0ee87e2fa60f7d1f7133f332c3ec
 
@@ -20,7 +21,7 @@ RUN mkdir /opt && \
 
 VOLUME /factorio
 
-EXPOSE $PORT/udp 27015/tcp
+EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
 
