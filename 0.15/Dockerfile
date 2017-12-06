@@ -14,6 +14,7 @@ RUN mkdir /opt && \
         -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c && \
     tar xf /tmp/factorio_headless_x64_$VERSION.tar.xz --directory /opt && \
+    chmod -R ugo=rwx /opt/factorio && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.xz && \
     ln -s /factorio/saves /opt/factorio/saves && \
     ln -s /factorio/mods /opt/factorio/mods && \
@@ -24,6 +25,7 @@ VOLUME /factorio
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/docker-entrypoint.sh"]
