@@ -25,7 +25,6 @@ VOLUME /factorio
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/docker-entrypoint.sh"]
