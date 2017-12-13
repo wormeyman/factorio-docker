@@ -1,5 +1,4 @@
 FROM frolvlad/alpine-glibc:alpine-3.6
-#FROM ubuntu:18.04
 
 MAINTAINER https://github.com/dtandersen/docker_factorio_server
 
@@ -10,17 +9,13 @@ ARG PGID=845
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
-    VERSION=0.16.0 \
-    SHA1=b4d8d6db02aff914b823d5f525c0f0f2acd9c355
-#    VERSION=0.15.40 \
-#    SHA1=f79a975f6b8c0ee87e2fa60f7d1f7133f332c3ec
+    VERSION=0.16.1 \
+    SHA1=1247cdb57b8146896f1972c60911fe45119c384b
 
 VOLUME /factorio
 
 RUN mkdir -p /opt && \
-#    apt-get update && \
-#    apt-get install -y curl xz-utils
-    apk add --update --no-cache tini pwgen && \
+    apk add --update --no-cache pwgen && \
     apk add --update --no-cache --virtual .build-deps curl && \
     curl -sSL https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
@@ -39,10 +34,8 @@ EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
 
-#USER $USER
+USER $USER
 
-#ENTRYPOINT ["/sbin/tini", "--"]
-#CMD ["/docker-entrypoint.sh"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/opt/factorio/bin/x64/factorio", \
     "--port", "$PORT", \
