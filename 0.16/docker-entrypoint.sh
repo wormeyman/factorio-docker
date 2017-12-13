@@ -2,12 +2,16 @@
 
 set -e
 
+id
+
 SAVES=/factorio/saves
 CONFIG=/factorio/config
 
 mkdir -p $SAVES
 mkdir -p /factorio/mods
 mkdir -p $CONFIG
+
+#chown -R factorio /factorio
 
 if [ ! -f $CONFIG/rconpw ]; then
   echo $(pwgen 15 1) > $CONFIG/rconpw
@@ -32,6 +36,7 @@ if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
     --map-settings $CONFIG/map-settings.json
 fi
 
+#exec "$@"
 exec /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
