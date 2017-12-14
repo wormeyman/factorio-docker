@@ -37,13 +37,3 @@ COPY ./docker-entrypoint.sh /
 USER $USER
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/opt/factorio/bin/x64/factorio", \
-    "--port", "$PORT", \
-    "--start-server-load-latest", \
-    "--server-settings $CONFIG/server-settings.json", \
-    "--server-whitelist $CONFIG/server-whitelist.json", \
-    "--server-banlist $CONFIG/server-banlist.json", \
-    "--rcon-port $RCON_PORT", \
-    "--rcon-password", "$(cat $CONFIG/rconpw)", \
-    "--server-id /factorio/config/server-id.json" \
-    ]

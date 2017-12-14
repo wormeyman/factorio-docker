@@ -36,7 +36,6 @@ if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
     --map-settings $CONFIG/map-settings.json
 fi
 
-#exec "$@"
 exec /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
