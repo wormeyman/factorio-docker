@@ -6,4 +6,3 @@ services:
      - "34197:34197"
     volumes:
      - /opt/factorio:/factorio
-    user: 1000:1000
