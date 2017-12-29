@@ -9,8 +9,8 @@ ARG PGID=845
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
-    VERSION=0.16.7 \
-    SHA1=7bd14a4d8abe2feef015d1b3d75c6ec82a5e2ccf
+    VERSION=0.16.9 \
+    SHA1=49402db4f0b86aaf3b31059310ac867cf467802d
 
 VOLUME /factorio
 
