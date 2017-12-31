@@ -158,11 +158,34 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
 
 ## Docker Compose
 
+[Docker Compose](https://docs.docker.com/compose/install/) is an easy way to run Docker containers.
+
+First get a [docker-compose.yml](https://github.com/dtandersen/docker_factorio_server/blob/master/0.16/docker-compose.yml) file. To get it from this repository:
+
 ```
 git clone https://github.com/dtandersen/docker_factorio_server.git
+cd docker_factorio_server/0.16
+```
+
+Or make your own:
+
+```
+version: '2'
+services:
+  factorio:
+    image: dtandersen/factorio
+    ports:
+     - "34197:34197/udp"
+     - "27015:27015/tcp"
+    volumes:
+     - /opt/factorio:/factorio
+```
+
+Now cd to the directory with docker-compose.yml and run:
+
+```
 sudo mkdir -p /opt/factorio
 sudo chown 845:845 /opt/factorio
-cd docker_factorio_server/0.16
 sudo docker-compose up -d
 ```
 
