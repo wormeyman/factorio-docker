@@ -12,9 +12,7 @@ ENV PORT=34197 \
     VERSION=0.16.11 \
     SHA1=31d227881249eef95fb99f653fa2dada6faada48
 
-VOLUME /factorio
-
-RUN mkdir -p /opt && \
+RUN mkdir -p /opt /factorio && \
     apk add --update --no-cache pwgen && \
     apk add --update --no-cache --virtual .build-deps curl && \
     curl -sSL https://www.factorio.com/get-download/$VERSION/headless/linux64 \
@@ -29,6 +27,8 @@ RUN mkdir -p /opt && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $USER -s /bin/sh -SDH $GROUP && \
     chown -R $USER:$GROUP /opt/factorio /factorio
+
+VOLUME /factorio
 
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
