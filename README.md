@@ -32,6 +32,7 @@ NOTE: This is only the server. The game is available at [factorio.com](https://w
 Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/opt/factorio`.
 
 ```
+chown 845:845 /tmp/factorio  # 1.16+ only
 docker run -d -p 34197:34197/udp -p 27015:27015/tcp \
   -v /opt/factorio:/factorio \
   --name factorio \
@@ -46,6 +47,8 @@ For those new to Docker, here is an explanation of the options:
 * `-v` - Mount `/opt/factorio` on the local file system to `/factorio` in the container.
 * `--restart` - Restart the server if it crashes and at system start
 * `--name` - Name the container "factorio" (otherwise it has a funny random name).
+
+The `chown` command is needed because in 1.16+, we no longer run the game server as root for security reasons, but rather as a 'factorio' user with user id 845. The host must therefore allow these files to be written by that user. 
 
 Check the logs to see what happened:
 
