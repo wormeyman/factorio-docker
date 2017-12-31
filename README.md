@@ -234,6 +234,9 @@ VirtualBox users must enable Bridged networking in order for the host to be assi
   config.vm.network "forwarded_port", guest: 34197, host: 34197
 ```
 
+## Vagrant
+
+Vagrant is a good way for those without a Linux machine to try Docker. Check out the [Factorio Vagrant Box](https://github.com/dtandersen/factorio-lan-vagrant).
 
 ## Troubleshooting
 
