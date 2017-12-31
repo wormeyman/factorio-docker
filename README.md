@@ -29,11 +29,11 @@ NOTE: This is only the server. The game is available at [factorio.com](https://w
 
 ## Quick Start
 
-Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/tmp/factorio`.
+Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/opt/factorio`.
 
 ```
 docker run -d -p 34197:34197/udp -p 27015:27015/tcp \
-  -v /tmp/factorio:/factorio \
+  -v /opt/factorio:/factorio \
   --name factorio \
   --restart=always  \
   dtandersen/factorio
@@ -43,7 +43,7 @@ For those new to Docker, here is an explanation of the options:
 
 * `-d` - Run as a daemon ("detached").
 * `-p` - Expose ports.
-* `-v` - Mount `/tmp/factorio` on the local file system to `/factorio` in the container.
+* `-v` - Mount `/opt/factorio` on the local file system to `/factorio` in the container.
 * `--restart` - Restart the server if it crashes and at system start
 * `--name` - Name the container "factorio" (otherwise it has a funny random name).
 
@@ -59,7 +59,7 @@ Stop the server:
 docker stop factorio
 ```
 
-Now there's a `server-settings.json` file in the folder `/tmp/factorio/config`. Modify this to your liking and restart the server:
+Now there's a `server-settings.json` file in the folder `/opt/factorio/config`. Modify this to your liking and restart the server:
 
 ```
 docker start factorio
@@ -95,7 +95,7 @@ Now run the server as before. In about a minute the new version of Factorio shou
 
 ## Saves
 
-A new map named `_autosave1.zip` is generated the first time the server is started. The `map-gen-settings.json` and `map-settings.json` files in `/tmp/factorio/config` are used for the map settings. On subsequent runs the newest save is used.
+A new map named `_autosave1.zip` is generated the first time the server is started. The `map-gen-settings.json` and `map-settings.json` files in `/opt/factorio/config` are used for the map settings. On subsequent runs the newest save is used.
 
 To load an old save stop the server and run the command `touch oldsave.zip`. This resets the date. Then restart the server. Another option is to delete all saves except one.
 
