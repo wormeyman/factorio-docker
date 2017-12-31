@@ -189,6 +189,7 @@ sudo chown 845:845 /opt/factorio
 sudo docker-compose up -d
 ```
 
+
 ## Ports
 
 * `34197/udp` - Game server (required).
@@ -199,6 +200,39 @@ sudo docker-compose up -d
 
 * `PORT` (0.15+) - Start the server on an alterate port, .e.g. `docker run -e "PORT=34198"`.
 * `RCON_PORT` (0.16+) - Start the RCON on an alterate port, .e.g. `docker run -e "RCON_PORT=34198"`.
+
+
+## LAN Games
+
+Ensure the `lan` setting in server-settings.json is `true`.
+
+```
+  "visibility":
+  {
+    "public": false,
+    "lan": true
+  },
+```
+
+Start the container with the `--network=host` option so clients can automatically find LAN games. Refer to the Quick Start to create the `/opt/factorio` directory.
+
+```
+sudo docker run -d \
+  --network=host \
+  -p 34197:34197/udp \
+  -p 27015:27015/tcp \
+  -v /opt/factorio:/factorio \
+  --name factorio \
+  --restart=always  \
+  dtandersen/factorio
+```
+
+VirtualBox users must enable Bridged networking in order for the host to be assigned an internal network IP. Enable Bridged networking in Vagrant with:
+
+```
+  config.vm.network "public_network"
+  config.vm.network "forwarded_port", guest: 34197, host: 34197
+```
 
 
 ## Troubleshooting
