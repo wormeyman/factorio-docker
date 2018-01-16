@@ -113,6 +113,38 @@ To generate a new map stop the server, delete all of the saves and restart the s
 Copy mods into the mods folder and restart the server.
 
 
+## Scenarios
+
+If you want to launch a scenario from a clean start (not from a saved map) you'll need to start the docker image from an alternate entrypoint. To do this, use the example entrypoint file stored in the /factorio/entrypoints directory in the volume, and launch the image with the following syntax. Note that this is the normal syntax with the addition of the --entrypoint setting AND the additional argument at the end, which is the name of the Scenario in the Scenarios folder.
+
+```
+docker run -d \
+  -p 34197:34197/udp \
+  -p 27015:27015/tcp \
+  -v /opt/factorio:/factorio \
+  --name factorio \
+  --restart=always  \
+  --entrypoint "/factorio/entrypoints/scenario.sh" \
+  dtandersen/factorio \
+  MyScenarioName
+```
+
+## Converting Scenarios to Regular Maps
+
+If you would like to export your scenario to a saved map, you can use the example entrypoint similar to the Scenario usag above. Factorio will run once, converting the Scenario to a saved Map in your saves directory. A restart of the docker image using the standard options will then load that map, just as if the scenario were just started by the Scenarios example noted above. 
+
+```
+docker run -d \
+  -p 34197:34197/udp \
+  -p 27015:27015/tcp \
+  -v /opt/factorio:/factorio \
+  --name factorio \
+  --restart=always  \
+  --entrypoint "/factorio/entrypoints/scenario2map.sh" \
+  dtandersen/factorio
+  MyScenarioName
+```
+
 ## RCON
 
 Set the RCON password in the `rconpw` file. A random password is generated if `rconpw` doesn't exist.

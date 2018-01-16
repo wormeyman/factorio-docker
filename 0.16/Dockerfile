@@ -23,6 +23,8 @@ RUN mkdir -p /opt /factorio && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.xz && \
     ln -s /factorio/saves /opt/factorio/saves && \
     ln -s /factorio/mods /opt/factorio/mods && \
+    ln -s /factorio/scenarios /opt/factorio/scenarios && \
+    ln -s /factorio/entrypoints /opt/factorio/entrypoints && \
     apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $USER -s /bin/sh -SDH $GROUP && \
