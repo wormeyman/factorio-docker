@@ -36,7 +36,7 @@ EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
 COPY ./scenario2map.sh /factorio/entrypoints
-COPY ./scenariosh /factorio/entrypoints
+COPY ./scenario.sh /factorio/entrypoints
 
 USER $USER
 
