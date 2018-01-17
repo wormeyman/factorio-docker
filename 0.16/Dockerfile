@@ -35,6 +35,8 @@ VOLUME /factorio
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
+COPY ./scenario2map.sh /factorio/entrypoints
+COPY ./scenariosh /factorio/entrypoints
 
 USER $USER
 
