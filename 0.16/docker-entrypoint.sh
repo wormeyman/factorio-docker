@@ -17,7 +17,7 @@ mkdir -p $SCENARIOS
 mkdir -p $ENTRYPOINTS
 
 #symbolic link the default entrypoint to the entrypoints directory so it can be inspected and copied to new entrypoints
-ln -s /docker-entrypoint.sh $ENTRYPOINTS/docker-entrypoint.sh
+ln -s -f /docker-entrypoint.sh $ENTRYPOINTS/docker-entrypoint.sh
 
 #chown -R factorio /factorio
 
