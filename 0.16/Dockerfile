@@ -23,10 +23,10 @@ RUN mkdir -p /opt /factorio && \
     tar xf /tmp/factorio_headless_x64_$VERSION.tar.xz --directory /opt && \
     chmod ugo=rwx /opt/factorio && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.xz && \
-    ln -s -F -f /factorio/saves /opt/factorio/saves && \
-    ln -s -F -f /factorio/mods /opt/factorio/mods && \
-    ln -s -F -f /factorio/scenarios /opt/factorio/scenarios && \
-    ln -s -F -f /factorio/entrypoints /opt/factorio/entrypoints && \
+    ln -s -f /factorio/saves /opt/factorio/saves && \
+    ln -s -f /factorio/mods /opt/factorio/mods && \
+    ln -s -f /factorio/scenarios /opt/factorio/scenarios && \
+    ln -s -f /factorio/entrypoints /opt/factorio/entrypoints && \
     apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
