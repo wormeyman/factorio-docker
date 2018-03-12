@@ -7,6 +7,8 @@ ARG GROUP=factorio
 ARG PUID=845
 ARG PGID=845
 
+VOLUME /factorio
+
 ENV PORT=34197 \
     RCON_PORT=27015 \
     VERSION=0.16.29 \
@@ -21,18 +23,22 @@ RUN mkdir -p /opt /factorio && \
     tar xf /tmp/factorio_headless_x64_$VERSION.tar.xz --directory /opt && \
     chmod ugo=rwx /opt/factorio && \
     rm /tmp/factorio_headless_x64_$VERSION.tar.xz && \
-    ln -s /factorio/saves /opt/factorio/saves && \
-    ln -s /factorio/mods /opt/factorio/mods && \
+    ln -s -f /factorio/saves /opt/factorio/saves && \
+    ln -s -f /factorio/mods /opt/factorio/mods && \
+    ln -s -f /factorio/scenarios /opt/factorio/scenarios && \
+    ln -s -f /factorio/entrypoints /opt/factorio/entrypoints && \
     apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
     chown -R $USER:$GROUP /opt/factorio /factorio
 
-VOLUME /factorio
+
 
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
+COPY ./scenario2map.sh /factorio/entrypoints
+COPY ./scenario.sh /factorio/entrypoints
 
 USER $USER
 
