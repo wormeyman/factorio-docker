@@ -288,7 +288,9 @@ Use the `PORT` environment variable to start the server on the a different port,
 # Contributors
 
 * [dtandersen](https://github.com/dtandersen/docker_factorio_server) - Maintainer
+* [Fank](https://github.com/Fankserver/docker-factorio-watchdog) - Keeper of the Factorio watchdog that keeps the version up-to-date.
 * [Zopanix](https://github.com/zopanix/docker_factorio_server) - Originator
 * [Rfvgyhn](https://github.com/Rfvgyhn/docker-factorio) - Randomly generate RCON password
 * [gnomus](https://github.com/gnomus/docker_factorio_server) - White listing
+* [bplein](https://github.com/bplein/docker_factorio_server) - Scenario support
 * [jaredledvina](https://github.com/jaredledvina/docker_factorio_server) - Version update
