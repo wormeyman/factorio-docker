@@ -7,8 +7,6 @@ ARG GROUP=factorio
 ARG PUID=845
 ARG PGID=845
 
-VOLUME /factorio
-
 ENV PORT=34197 \
     RCON_PORT=27015 \
     VERSION=0.16.29 \
@@ -32,13 +30,16 @@ RUN mkdir -p /opt /factorio && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
     chown -R $USER:$GROUP /opt/factorio /factorio
 
-
+VOLUME /factorio
 
 EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
 COPY ./scenario2map.sh /factorio/entrypoints
 COPY ./scenario.sh /factorio/entrypoints
+
+#symbolic link the default entrypoint to the entrypoints directory so it can be inspected and copied to new entrypoints
+ln -s -f /docker-entrypoint.sh $ENTRYPOINTS/docker-entrypoint.sh
 
 USER $USER
 
