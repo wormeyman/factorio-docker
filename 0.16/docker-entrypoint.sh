@@ -7,8 +7,6 @@ id
 mkdir -p $SAVES
 mkdir -p $CONFIG
 mkdir -p $MODS
-mkdir -p $SCENARIOS
-mkdir -p $ENTRYPOINTS
 
 #chown -R factorio /factorio
 
