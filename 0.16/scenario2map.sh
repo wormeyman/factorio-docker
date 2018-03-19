@@ -9,17 +9,10 @@ set -e
 
 id
 
-SAVES=/factorio/saves
-CONFIG=/factorio/config
-MODS=/factorio/mods
-SCENARIOS=/factorio/scenarios
-
 mkdir -p $SAVES
 mkdir -p $CONFIG
 mkdir -p $MODS
 mkdir -p $SCENARIOS
-
-#chown -R factorio /factorio
 
 if [ ! -f $CONFIG/server-settings.json ]; then
   cp /opt/factorio/data/server-settings.example.json $CONFIG/server-settings.json

@@ -7,8 +7,7 @@ id
 mkdir -p $SAVES
 mkdir -p $CONFIG
 mkdir -p $MODS
-
-#chown -R factorio /factorio
+mkdir -p $SCENARIOS
 
 if [ ! -f $CONFIG/rconpw ]; then
   echo $(pwgen 15 1) > $CONFIG/rconpw

@@ -124,7 +124,7 @@ docker run -d \
   -v /opt/factorio:/factorio \
   --name factorio \
   --restart=always  \
-  --entrypoint "/factorio/entrypoints/scenario.sh" \
+  --entrypoint "/scenario.sh" \
   dtandersen/factorio \
   MyScenarioName
 ```
@@ -140,7 +140,7 @@ docker run -d \
   -v /opt/factorio:/factorio \
   --name factorio \
   --restart=always  \
-  --entrypoint "/factorio/entrypoints/scenario2map.sh" \
+  --entrypoint "/scenario2map.sh" \
   dtandersen/factorio
   MyScenarioName
 ```
