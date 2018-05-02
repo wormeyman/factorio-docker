@@ -8,6 +8,7 @@ mkdir -p $SAVES
 mkdir -p $CONFIG
 mkdir -p $MODS
 mkdir -p $SCENARIOS
+mkdir -p $SCRIPTOUTPUT
 
 if [ ! -f $CONFIG/rconpw ]; then
   echo $(pwgen 15 1) > $CONFIG/rconpw
