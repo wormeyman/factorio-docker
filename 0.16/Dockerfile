@@ -14,7 +14,8 @@ ENV PORT=34197 \
     SAVES=/factorio/saves \
     CONFIG=/factorio/config \
     MODS=/factorio/mods \
-    SCENARIOS=/factorio/scenarios
+    SCENARIOS=/factorio/scenarios \
+    SCRIPTOUTPUT=/factorio/script-output
 
 RUN mkdir -p /opt /factorio && \
     apk add --update --no-cache pwgen && \
@@ -28,6 +29,7 @@ RUN mkdir -p /opt /factorio && \
     ln -s $SAVES /opt/factorio/saves && \
     ln -s $MODS /opt/factorio/mods && \
     ln -s $SCENARIOS /opt/factorio/scenarios && \
+    ln -s $SCRIPTOUTPUT /opt/factorio/script-output && \
     apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
