@@ -8,8 +8,8 @@
 
 *Tag descriptions*
 
-* `latest` - highest version: may be experimental.
-* `stable` - highest version declared stable.
+* `latest` - the most up-to-date version (may be experimental).
+* `stable` - the version declared stable on [factorio.com](https://www.factorio.com).
 * `0.x` - highest version in a branch: may be experimental.
 * `0.x.y` - a specific version.
 * `0.x-dev` - whatever is in master for that version.
