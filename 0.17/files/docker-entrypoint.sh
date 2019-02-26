@@ -19,9 +19,10 @@ if [ ! -f $CONFIG/server-settings.json ]; then
   cp /opt/factorio/data/server-settings.example.json $CONFIG/server-settings.json
 fi
 
-if [ ! -f $CONFIG/map-gen-settings.json ]; then
-  cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
-fi
+#if [ ! -f $CONFIG/map-gen-settings.json ]; then
+#  cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
+#fi
+echo "{}" > $CONFIG/map-gen-settings.json
 
 if [ ! -f $CONFIG/map-settings.json ]; then
   cp /opt/factorio/data/map-settings.example.json $CONFIG/map-settings.json
@@ -42,13 +43,14 @@ if [ "$(id -u)" = '0' ]; then
   chown -R factorio:factorio $FACTORIO_VOL
 fi
 
-exec gosu factorio /opt/factorio/bin/x64/factorio \
+exec /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
   --server-settings $CONFIG/server-settings.json \
-  --server-whitelist $CONFIG/server-whitelist.json \
   --server-banlist $CONFIG/server-banlist.json \
   --rcon-port $RCON_PORT \
+  --server-whitelist $CONFIG/server-whitelist.json \
+  --use-server-whitelist \
   --rcon-password "$(cat $CONFIG/rconpw)" \
   --server-id /factorio/config/server-id.json \
   $@
