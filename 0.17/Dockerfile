@@ -41,6 +41,4 @@ EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY files/ /
 
-#USER $USER
-
 ENTRYPOINT ["/docker-entrypoint.sh"]
