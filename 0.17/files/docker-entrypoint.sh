@@ -2,7 +2,7 @@
 set -e
 
 id
-
+#
 FACTORIO_VOL=/factorio
 mkdir -p $FACTORIO_VOL
 mkdir -p $SAVES
