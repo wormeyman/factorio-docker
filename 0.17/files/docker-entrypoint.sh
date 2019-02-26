@@ -3,6 +3,8 @@ set -e
 
 id
 
+FACTORIO_VOL=/factorio
+mkdir -p $FACTORIO_VOL
 mkdir -p $SAVES
 mkdir -p $CONFIG
 mkdir -p $MODS
@@ -36,7 +38,11 @@ if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
     --map-settings $CONFIG/map-settings.json
 fi
 
-exec /opt/factorio/bin/x64/factorio \
+if [ "$(id -u)" = '0' ]; then
+  chown -R factorio:factorio $FACTORIO_VOL
+fi
+
+exec gosu factorio /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
   --server-settings $CONFIG/server-settings.json \
