@@ -2,7 +2,7 @@
 set -e
 
 id
-
+#
 FACTORIO_VOL=/factorio
 mkdir -p $FACTORIO_VOL
 mkdir -p $SAVES
@@ -19,10 +19,10 @@ if [ ! -f $CONFIG/server-settings.json ]; then
   cp /opt/factorio/data/server-settings.example.json $CONFIG/server-settings.json
 fi
 
-#if [ ! -f $CONFIG/map-gen-settings.json ]; then
+if [ ! -f $CONFIG/map-gen-settings.json ]; then
 #  cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
-#fi
-echo "{}" > $CONFIG/map-gen-settings.json
+  echo "{}" > $CONFIG/map-gen-settings.json
+fi
 
 if [ ! -f $CONFIG/map-settings.json ]; then
   cp /opt/factorio/data/map-settings.example.json $CONFIG/map-settings.json
@@ -43,7 +43,7 @@ if [ "$(id -u)" = '0' ]; then
   chown -R factorio:factorio $FACTORIO_VOL
 fi
 
-exec /opt/factorio/bin/x64/factorio \
+exec su-exec factorio /opt/factorio/bin/x64/factorio \
   --port $PORT \
   --start-server-load-latest \
   --server-settings $CONFIG/server-settings.json \
