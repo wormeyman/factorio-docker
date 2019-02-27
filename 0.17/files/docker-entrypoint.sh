@@ -35,22 +35,22 @@ if find -L $SAVES -iname \*.tmp.zip -mindepth 1 -print | grep -q .; then
   rm -f $SAVES/*.tmp.zip
 fi
 
-if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
-  # Generate a new map if no save ZIPs exist
-  /opt/factorio/bin/x64/factorio \
-    --create $SAVES/_autosave1.zip  \
-    --map-gen-settings $CONFIG/map-gen-settings.json \
-    --map-settings $CONFIG/map-settings.json
-fi
-
 if [ "$(id -u)" = '0' ]; then
   # Take ownership of factorio data if running as root
   chown -R factorio:factorio $FACTORIO_VOL
   # Make sure we own temp
-  mkdir -p /opt/factorio/temp
-  chown -R factorio:factorio /opt/factorio/temp
+  #mkdir -p /opt/factorio/temp
+  #chown -R factorio:factorio /opt/factorio/temp
   # Drop to the factorio user
   SU_EXEC="su-exec factorio"
+fi
+
+if ! find -L $SAVES -iname \*.zip -mindepth 1 -print | grep -q .; then
+  # Generate a new map if no save ZIPs exist
+  ${SU_EXEC} /opt/factorio/bin/x64/factorio \
+    --create $SAVES/_autosave1.zip  \
+    --map-gen-settings $CONFIG/map-gen-settings.json \
+    --map-settings $CONFIG/map-settings.json
 fi
 
 exec ${SU_EXEC} /opt/factorio/bin/x64/factorio \
