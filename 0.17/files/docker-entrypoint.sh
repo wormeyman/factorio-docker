@@ -22,8 +22,7 @@ if [ ! -f $CONFIG/server-settings.json ]; then
 fi
 
 if [ ! -f $CONFIG/map-gen-settings.json ]; then
-  # TODO: Need a valid map-gen-settings.json
-  # cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
+  cp /opt/factorio/data/map-gen-settings.example.json $CONFIG/map-gen-settings.json
   echo "{}" > $CONFIG/map-gen-settings.json
 fi
 
