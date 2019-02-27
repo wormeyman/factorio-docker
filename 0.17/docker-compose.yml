@@ -7,3 +7,5 @@ services:
      - "27015:27015/tcp"
     volumes:
      - /opt/factorio:/factorio
+#    user: 845:845
+#    user: 1000:1000
