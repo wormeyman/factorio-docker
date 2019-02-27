@@ -34,6 +34,10 @@ RUN mkdir -p /opt /factorio && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
     chown -R $USER:$GROUP /opt/factorio /factorio
+#    mkdir -p /opt/factorio/temp && \
+#    chmod 777 -R /opt/factorio/temp && \
+#    mkdir -p /opt/factorio/temp && \
+#    chmod 777 -R /opt/factorio/temp && \
 
 VOLUME /factorio
 
