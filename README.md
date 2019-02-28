@@ -198,11 +198,12 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     factorio
     |-- config
     |   |-- map-gen-settings.json
+    |   |-- map-settings.json
     |   |-- rconpw
-    |   |-- server-settings.json
-    |   |-- server-whitelist.json
+    |   |-- server-adminlist.json
     |   |-- server-banlist.json
-    |   `-- server-adminlist.json
+    |   |-- server-settings.json
+    |   `-- server-whitelist.json
     |-- mods
     |   `-- fancymod.zip
     `-- saves
