@@ -18,7 +18,7 @@ ENV PORT=34197 \
     SCRIPTOUTPUT=/factorio/script-output
 
 RUN mkdir -p /opt /factorio && \
-    apk add --update --no-cache pwgen su-exec && \
+    apk add --update --no-cache pwgen su-exec binutils && \
     apk add --update --no-cache --virtual .build-deps curl && \
     curl -sSL https://www.factorio.com/get-download/$VERSION/headless/linux64 \
         -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
@@ -34,10 +34,6 @@ RUN mkdir -p /opt /factorio && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
     chown -R $USER:$GROUP /opt/factorio /factorio
-#    mkdir -p /opt/factorio/temp && \
-#    chmod 777 -R /opt/factorio/temp && \
-#    mkdir -p /opt/factorio/temp && \
-#    chmod 777 -R /opt/factorio/temp && \
 
 VOLUME /factorio
 
