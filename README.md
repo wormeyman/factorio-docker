@@ -195,6 +195,8 @@ The philosophy is to [keep it simple](http://wiki.c2.com/?KeepItSimple).
 
 To keep things simple, the container uses a single volume mounted at `/factorio`. This volume stores configuration, mods, and saves.
 
+The files in this volume should be owned by the factorio user, uid 845.
+
     factorio
     |-- config
     |   |-- map-gen-settings.json
@@ -208,7 +210,6 @@ To keep things simple, the container uses a single volume mounted at `/factorio`
     |   `-- fancymod.zip
     `-- saves
         `-- _autosave1.zip
-
 
 ## Docker Compose
 
@@ -281,16 +282,16 @@ sudo docker run -d \
   dtandersen/factorio
 ```
 
-VirtualBox users must enable Bridged networking in order for the host to be assigned an internal network IP. Enable Bridged networking in Vagrant with:
+## Vagrant
+
+[Vagrant](https://www.vagrantup.com/) is a easy way to setup a virtual machine (VM) to run Docker. The [Factorio Vagrant box repository](https://github.com/dtandersen/factorio-lan-vagrant) contains a sample Vagrantfile.
+
+For LAN games the VM needs an internal IP in order for clients to connect. One way to do this is with a public network. The VM uses DHCP to acquire an IP address. The VM must also forward port 34197.
 
 ```
   config.vm.network "public_network"
   config.vm.network "forwarded_port", guest: 34197, host: 34197
 ```
-
-## Vagrant
-
-Vagrant is a good way for those without a Linux machine to try Docker. Check out the [Factorio Vagrant Box](https://github.com/dtandersen/factorio-lan-vagrant).
 
 ## Troubleshooting
 
