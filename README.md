@@ -184,9 +184,9 @@ Create file `config/server-adminlist.json` and add the adminlisted users.
 
 ## Customize configuration files
 
-Out-of-the box, factorio does not support environment variables inside the configuration files. A workaround is the usage of `envsubst` which generates the configuration files dynamically during startup.
+Out-of-the box, factorio does not support environment variables inside the configuration files. A workaround is the usage of `envsubst` which generates the configuration files dynamically during startup from environment variables set in docker-compose:
 
-Example for server-settings.json:
+Example which replaces the server-settings.json:
 
 
 	factorio_1:
