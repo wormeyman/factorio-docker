@@ -7,5 +7,6 @@ services:
      - "27015:27015/tcp"
     volumes:
      - /opt/factorio:/factorio
-#    user: 845:845
-#    user: 1000:1000
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
