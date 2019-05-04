@@ -2,7 +2,7 @@
 if [ -z "$1" ]; then
   echo "No argument supplied"
 fi
-SCENARIO=$1
+SERVER_SCENARIO=$1
 
 set -euo pipefail
 
@@ -11,7 +11,7 @@ id
 mkdir -p "$SAVES"
 mkdir -p "$CONFIG"
 mkdir -p "$MODS"
-mkdir -p "$SCENARIO"
+mkdir -p "$SCENARIOS"
 
 if [ ! -f "$CONFIG/server-settings.json" ]; then
   cp /opt/factorio/data/server-settings.example.json "$CONFIG/server-settings.json"
@@ -26,4 +26,4 @@ if [ ! -f "$CONFIG/map-settings.json" ]; then
 fi
 
 exec /opt/factorio/bin/x64/factorio \
-  --scenario2map "$SCENARIO"
+  --scenario2map "$SERVER_SCENARIO"
