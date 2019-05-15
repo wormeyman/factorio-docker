@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.9
 
-LABEL maintainer="https://github.com/dtandersen/docker_factorio_server"
+LABEL maintainer="https://github.com/factoriotools/factorio-docker"
 
 ENV PORT=34197 \
     RCON_PORT=27015 \

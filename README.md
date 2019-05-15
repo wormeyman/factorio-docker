@@ -1,9 +1,9 @@
 # Factorio [![](https://images.microbadger.com/badges/image/factoriotools/factorio.svg)](https://microbadger.com/images/factoriotools/factorio "Get your own image badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/pulls/factoriotools/factorio.svg)](https://hub.docker.com/r/factoriotools/factorio/) [![Docker Stars](https://img.shields.io/docker/stars/factoriotools/factorio.svg)](https://hub.docker.com/r/factoriotools/factorio/)
 
-* `0.17.39`, `0.17`, `latest` [(0.17/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.17/Dockerfile)
-* `0.16.51`, `0.16`, `stable` [(0.16/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.16/Dockerfile)
-* `0.15.40`, `0.15` [(0.15/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.15/Dockerfile)
-* `0.14.23`, `0.14` [(0.14/Dockerfile)](https://github.com/dtandersen/docker_factorio_server/blob/master/0.14/Dockerfile)
+* `0.17.39`, `0.17`, `latest` [(0.17/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.17/Dockerfile)
+* `0.16.51`, `0.16`, `stable` [(0.16/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.16/Dockerfile)
+* `0.15.40`, `0.15` [(0.15/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.15/Dockerfile)
+* `0.14.23`, `0.14` [(0.14/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.14/Dockerfile)
 
 *Tag descriptions*
 
@@ -239,10 +239,10 @@ The files in this volume should be owned by the factorio user, uid 845.
 
 [Docker Compose](https://docs.docker.com/compose/install/) is an easy way to run Docker containers.
 
-First get a [docker-compose.yml](https://github.com/dtandersen/docker_factorio_server/blob/master/0.17/docker-compose.yml) file. To get it from this repository:
+First get a [docker-compose.yml](https://github.com/factoriotools/factorio-docker/blob/master/0.17/docker-compose.yml) file. To get it from this repository:
 
 ```
-git clone https://github.com/dtandersen/docker_factorio_server.git
+git clone https://github.com/factoriotools/factorio-docker.git
 cd docker_factorio_server/0.17
 ```
 
@@ -338,7 +338,7 @@ Use the `PORT` environment variable to start the server on the a different port,
 
 # Contributors
 
-* [dtandersen](https://github.com/dtandersen/docker_factorio_server) - Maintainer
+* [dtandersen](https://github.com/dtandersen) - Maintainer
 * [Fank](https://github.com/Fankserver/docker-factorio-watchdog) - Keeper of the Factorio watchdog that keeps the version up-to-date.
 * [DBendit](https://github.com/DBendit/docker_factorio_server) - Admin list, ban list, version updates
 * [Zopanix](https://github.com/zopanix/docker_factorio_server) - Originator
