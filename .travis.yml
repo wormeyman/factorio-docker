@@ -11,25 +11,17 @@ addons:
 jobs:
   include:
     - stage: test
-      env: HADOLINT=${HOME}/hadolint
-      install: curl -sLo ${HADOLINT} $(curl -s https://api.github.com/repos/hadolint/hadolint/releases/latest?access_token=${GITHUB_TOKEN} | jq -r '.assets | .[] | select(.name=="hadolint-Linux-x86_64") | .browser_download_url')
-               && chmod 700 ${HADOLINT}
       script:
-        - git ls-files --exclude='*Dockerfile' --ignored | xargs --max-lines=1 ${HADOLINT}
+        - git ls-files --exclude='*Dockerfile' --ignored | xargs --max-lines=1 -I{} sh -c 'docker run --rm -i -v ${PWD}/.hadolint.yaml:/.hadolint.yaml hadolint/hadolint < "$1"' -- {}
         - bash -c 'shopt -s globstar; shellcheck **/*.sh'
     - &build
       stage: build
-      env: VERSION=0.17
+      env: VERSION_SHORT=0.17 EXTRA_TAG=latest
       script:
-        - ./build.sh $VERSION
-      after_success:
-        - if [ "$TRAVIS_BRANCH" == "master" ]; then
-            echo "$DOCKER_PASSWORD" | DOCKER login -u "$DOCKER_USERNAME" --password-stdin
-            docker push "factoriotools/docker_factorio_server:$VERSION"
-          fi
+        - ./build.sh $VERSION_SHORT
     - <<: *build
-      env: VERSION=0.16
+      env: VERSION_SHORT=0.16 EXTRA_TAG=stable
     - <<: *build
-      env: VERSION=0.15
+      env: VERSION_SHORT=0.15
     - <<: *build
-      env: VERSION=0.14
+      env: VERSION_SHORT=0.14
