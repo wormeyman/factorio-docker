@@ -29,7 +29,7 @@ fi
 docker build . -t $DOCKER_REPO:$TAG
 
 docker images
-if [[ "$(dirname "$(git diff --name-only HEAD^)")" =~ $VERSION ]] && [ "$TRAVIS_BRANCH" == "master" ]; then
+if [[ "$(dirname "$(git diff --name-only HEAD^)")" =~ $VERSION_SHORT ]] && [ "$TRAVIS_BRANCH" == "master" ]; then
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   docker push "$DOCKER_REPO:latest"
 
