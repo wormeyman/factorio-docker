@@ -8,7 +8,7 @@ else
 fi
 
 VERSION=$(grep -oP '[0-9]+\.[0-9]+\.[0-9]+' "$VERSION_SHORT/Dockerfile" | head -1)
-DOCKER_REPO=factoriotools/docker_factorio_server
+DOCKER_REPO=factoriotools/factorio-docker
 cd "$VERSION_SHORT" || exit
 
 if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
