@@ -44,7 +44,7 @@ if [[ "$(dirname "$(git diff --name-only HEAD^)")" =~ $VERSION_SHORT ]] && [ "$T
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   fi
 
-  if [ -n "$TRAVIS_BRANCH" ]; then
+  if [ -n "$TRAVIS_BRANCH" ] && [ "$TRAVIS_BRANCH" != "$VERSION" ]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
   if [ -n "$TRAVIS_TAG" ] || [ "$CI" == "" ]; then
