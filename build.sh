@@ -36,7 +36,10 @@ fi
 docker build . -t $TAGS
 docker images
 
-if [[ "$(dirname "$(git diff --name-only HEAD^)")" =~ $VERSION_SHORT ]] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_BRANCH" == "$VERSION" ]  && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ] || [ "$CI" == "" ]; then
+if [[ "$(dirname "$(git diff --name-only HEAD^)")" =~ $VERSION_SHORT ]] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ] ||
+  [ "$TRAVIS_BRANCH" == "$VERSION" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ] ||
+  [ "$CI" == "" ]; then
+
   if [ "$CI" == "true" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   fi
