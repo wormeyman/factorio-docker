@@ -19,7 +19,7 @@ DOCKER_REPO=factoriotools/factorio
 if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
   TAGS="$DOCKER_REPO:$TRAVIS_PULL_REQUEST_SLUG"
 else
-  if [ "$TRAVIS_BRANCH" == "master" ]; then
+  if [ "$TRAVIS_BRANCH" == "master" ] || [ "$TRAVIS_BRANCH" == "$VERSION" ]; then
     TAGS="$DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
   elif [ -n "$TRAVIS_BRANCH" ]; then
     TAGS="$DOCKER_REPO:$TRAVIS_BRANCH"
