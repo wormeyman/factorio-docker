@@ -20,7 +20,7 @@ ENV PORT=34197 \
     PGID="$PGID"
 
 RUN mkdir -p /opt /factorio && \
-    apk add --update --no-cache pwgen su-exec binutils gettext libintl shadow curl jq bash && \
+    apk add --update --no-cache --no-progress bash binutils curl gettext jq libintl pwgen shadow su-exec && \
     curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" \
         -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
     echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c && \
