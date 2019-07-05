@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash -x
 if [ -z "$1" ]; then
   echo "No argument supplied"
 fi

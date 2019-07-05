@@ -12,7 +12,7 @@ print_step()
   echo "$1"
 }
 
-print_success() 
+print_success()
 {
   echo "$1"
 }

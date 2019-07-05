@@ -35,7 +35,7 @@ if [ "$NRTMPSAVES" -gt 0 ]; then
   rm -f "$SAVES"/*.tmp.zip
 fi
 
-if [[ $UPDATE_MODS_ON_START ]]; then
+if [[ ${UPDATE_MODS_ON_START:-} ]]; then
   ./docker-update-mods.sh
 fi
 
