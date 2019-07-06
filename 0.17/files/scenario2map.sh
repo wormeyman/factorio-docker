@@ -1,5 +1,5 @@
-#!/bin/bash -x
-if [ -z "$1" ]; then
+#!/bin/bash
+set -eoux pipefail
   echo "No argument supplied"
 fi
 SERVER_SCENARIO="$1"

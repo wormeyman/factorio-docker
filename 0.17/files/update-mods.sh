@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eou pipefail
 
 FACTORIO_VERSION=$1
 MOD_DIR=$2

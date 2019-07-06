@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eou pipefail
 
 if [[ -f /run/secrets/username ]]; then
   USERNAME=$(cat /run/secrets/username)

@@ -1,7 +1,5 @@
-#!/bin/bash -x
-set -euo pipefail
-
-id
+#!/bin/bash
+set -eoux pipefail
 
 FACTORIO_VOL=/factorio
 mkdir -p "$FACTORIO_VOL"

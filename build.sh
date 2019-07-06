@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eox pipefail
+set -eoux pipefail
 
 if [ -z "$1" ] && [ -n "$CI" ]; then
   echo "Usage: ./build.sh \$VERSION_SHORT"
