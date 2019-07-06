@@ -33,7 +33,7 @@ else
     TAGS="$DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
   fi
 
-  if [[ -n $EXTRA_TAG ]]; then
+  if [[ -n ${EXTRA_TAG:-} ]]; then
     TAGS="$TAGS -t $DOCKER_REPO:$EXTRA_TAG"
   fi
 fi
@@ -55,21 +55,21 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRA
   fi
 
   # push a tag on a branch other than master
-  if [[ -n "$TRAVIS_BRANCH" ]] && [[ "$TRAVIS_BRANCH" != "${VERSION%-*}" ]] && [[ "$TRAVIS_BRANCH" != "master" ]]; then
+  if [[ -n $TRAVIS_BRANCH ]] && [[ $TRAVIS_BRANCH != "${VERSION%-*}" ]] && [[ $TRAVIS_BRANCH != "master" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
   # push an incremental tag
-  if [[ "$TRAVIS_BRANCH" != "${VERSION%-*}" ]]; then
+  if [[ $TRAVIS_BRANCH != "${VERSION%-*}" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
-  if [[ -n "$TRAVIS_TAG" ]] || [[ "$CI" == "" ]]; then
+  if [[ -n $TRAVIS_TAG ]] || [[ $CI == "" ]]; then
     docker push "$DOCKER_REPO:$VERSION"
     docker push "$DOCKER_REPO:$VERSION_SHORT"
   fi
 
-  if [[ -n "$EXTRA_TAG" ]]; then
+  if [[ -n ${EXTRA_TAG:-} ]]; then
     docker push "$DOCKER_REPO:$EXTRA_TAG"
   fi
 
