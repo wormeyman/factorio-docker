@@ -46,7 +46,7 @@ docker images
 # latest changes where made in the folder corosponding to the version we build, we are on master and don#t build a PR.
 if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRAVIS_BRANCH == master ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
   # we build a tag and we are not on master
-  [[ $TRAVIS_BRANCH == "${VERSION%-*}" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
+  [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
   # we are not in CI
   [[ $CI == "" ]]; then
 
@@ -55,12 +55,12 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRA
   fi
 
   # push a tag on a branch other than master
-  if [[ -n $TRAVIS_BRANCH ]] && [[ $TRAVIS_BRANCH != "${VERSION%-*}" ]] && [[ $TRAVIS_BRANCH != "master" ]]; then
+  if [[ -n $TRAVIS_BRANCH ]] && [[ $VERSION != "${TRAVIS_BRANCH%-*}" ]] && [[ $TRAVIS_BRANCH != "master" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
   # push an incremental tag
-  if [[ $TRAVIS_BRANCH != "${VERSION%-*}" ]]; then
+  if [[ $VERSION != "${TRAVIS_BRANCH%-*}" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
