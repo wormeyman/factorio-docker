@@ -9,9 +9,9 @@
 
 * `latest` - most up-to-date version (may be experimental).
 * `stable` - version declared stable on [factorio.com](https://www.factorio.com).
-* `0.x` - latest version in a branch.
+* `0.x`    - latest version in a branch.
 * `0.x.y` - a specific version.
-* `0.x-dev` - whatever is in master for that version.
+* `0.x-z` - incremental fix for that version.
 
 
 # What is Factorio?
