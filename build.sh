@@ -60,7 +60,7 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRA
   fi
 
   # push an incremental tag
-  if [[ $VERSION != "${TRAVIS_BRANCH%-*}" ]]; then
+  if [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
