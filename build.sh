@@ -23,7 +23,7 @@ else
   if [[ $TRAVIS_BRANCH == master ]] || [[ $TRAVIS_BRANCH == "$VERSION" ]]; then
     TAGS="$DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
   # we are on an incremental build of a tag
-  elif [[ $TRAVIS_BRANCH == "${VERSION%-*}" ]]; then
+  elif [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]]; then
     TAGS="$DOCKER_REPO:$TRAVIS_BRANCH -t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
   # we build a other branch than master
   elif [[ -n $TRAVIS_BRANCH ]]; then
