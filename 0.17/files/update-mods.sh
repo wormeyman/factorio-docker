@@ -67,8 +67,7 @@ update_mod()
     return 1
   fi
 
-  set -- "$(sha1sum "$MOD_DIR/$MOD_FILENAME")"
-  if [[ $1 != "$MOD_SHA1" ]]; then
+  if ! [[ $(sha1sum "$MOD_DIR/$MOD_FILENAME") =~ $MOD_SHA1 ]]; then
     print_failure "  SHA1 mismatch!"
     rm "$MOD_DIR/$MOD_FILENAME"
     return 1
