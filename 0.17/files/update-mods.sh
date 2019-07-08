@@ -25,7 +25,7 @@ print_failure()
 
 update_mod()
 {
-  MOD_NAME="$1"
+  MOD_NAME="${1// /%20}"
 
   print_step "Checking for update of mod $MOD_NAME..."
 
