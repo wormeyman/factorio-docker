@@ -19,21 +19,21 @@ ENV PORT=34197 \
     PUID="$PUID" \
     PGID="$PGID"
 
-RUN mkdir -p /opt /factorio && \
-    apk add --update --no-cache --no-progress bash binutils curl gettext jq libintl pwgen shadow su-exec && \
-    curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" \
-        -o /tmp/factorio_headless_x64_$VERSION.tar.xz && \
-    echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c && \
-    tar xf "/tmp/factorio_headless_x64_$VERSION.tar.xz" --directory /opt && \
-    chmod ugo=rwx /opt/factorio && \
-    rm "/tmp/factorio_headless_x64_$VERSION.tar.xz" && \
-    ln -s "$SAVES" /opt/factorio/saves && \
-    ln -s "$MODS" /opt/factorio/mods && \
-    ln -s "$SCENARIOS" /opt/factorio/scenarios && \
-    ln -s "$SCRIPTOUTPUT" /opt/factorio/script-output && \
-    addgroup -g "$PGID" -S "$GROUP" && \
-    adduser -u "$PUID" -G "$GROUP" -s /bin/sh -SDH "$USER" && \
-    chown -R "$USER":"$GROUP" /opt/factorio /factorio
+RUN mkdir -p /opt /factorio \
+    && apk add --update --no-cache --no-progress bash binutils curl gettext jq libintl pwgen shadow su-exec \
+    && curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" \
+        -o /tmp/factorio_headless_x64_$VERSION.tar.xz \
+    && echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c \
+    && tar xf "/tmp/factorio_headless_x64_$VERSION.tar.xz" --directory /opt \
+    && chmod ugo=rwx /opt/factorio \
+    && rm "/tmp/factorio_headless_x64_$VERSION.tar.xz" \
+    && ln -s "$SAVES" /opt/factorio/saves \
+    && ln -s "$MODS" /opt/factorio/mods \
+    && ln -s "$SCENARIOS" /opt/factorio/scenarios \
+    && ln -s "$SCRIPTOUTPUT" /opt/factorio/script-output \
+    && addgroup -g "$PGID" -S "$GROUP" \
+    && adduser -u "$PUID" -G "$GROUP" -s /bin/sh -SDH "$USER" \
+    && chown -R "$USER":"$GROUP" /opt/factorio /factorio
 
 VOLUME /factorio
 
