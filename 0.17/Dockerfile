@@ -19,14 +19,16 @@ ENV PORT=34197 \
     PUID="$PUID" \
     PGID="$PGID"
 
-RUN mkdir -p /opt /factorio \
-    && apk add --update --no-cache --no-progress bash binutils curl gettext jq libintl pwgen shadow su-exec \
-    && curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" \
-        -o /tmp/factorio_headless_x64_$VERSION.tar.xz \
-    && echo "$SHA1  /tmp/factorio_headless_x64_$VERSION.tar.xz" | sha1sum -c \
-    && tar xf "/tmp/factorio_headless_x64_$VERSION.tar.xz" --directory /opt \
+RUN set -ox pipefail \
+    && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
+    && mkdir -p /opt /factorio \
+    && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec \
+    && curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" -o "$archive" \
+    && echo "$SHA1  $archive" | sha1sum -c \
+    || (sha1sum "$archive" && file "$archive" && exit 1) \
+    && tar xf "$archive" --directory /opt \
     && chmod ugo=rwx /opt/factorio \
-    && rm "/tmp/factorio_headless_x64_$VERSION.tar.xz" \
+    && rm "$archive" \
     && ln -s "$SAVES" /opt/factorio/saves \
     && ln -s "$MODS" /opt/factorio/mods \
     && ln -s "$SCENARIOS" /opt/factorio/scenarios \
