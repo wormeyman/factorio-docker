@@ -22,7 +22,7 @@ You will be mining resources, researching technologies, building infrastructure,
 
 The game is very stable and optimized for building massive factories. You can create your own maps, write mods in Lua or play with friends via Multiplayer.
 
-NOTE: This is only the server. The game is available at [factorio.com](https://www.factorio.com), [Steam](http://store.steampowered.com/app/427520/) and [Gog](https://www.gog.com/game/factorio).
+NOTE: This is only the server. The full game is available at [Factorio.com](https://www.factorio.com), [Steam](https://store.steampowered.com/app/427520/), [GOG.com](https://www.gog.com/game/factorio) and [Humble Bundle](https://www.humblebundle.com/store/factorio).
 
 
 # Usage
