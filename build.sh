@@ -22,13 +22,13 @@ else
   if [[ -n ${CI:-} ]]; then
     # we are either on master or on a tag build
     if [[ $TRAVIS_BRANCH == master ]] || [[ $TRAVIS_BRANCH == "$VERSION" ]]; then
-      TAGS="$DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
+      TAGS="-t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
     # we are on an incremental build of a tag
     elif [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]]; then
-      TAGS="$DOCKER_REPO:$TRAVIS_BRANCH -t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
+      TAGS="-t $DOCKER_REPO:$TRAVIS_BRANCH -t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
     # we build a other branch than master
     elif [[ -n $TRAVIS_BRANCH ]]; then
-      TAGS="$DOCKER_REPO:$TRAVIS_BRANCH"
+      TAGS="-t $DOCKER_REPO:$TRAVIS_BRANCH"
     fi
   else
     # we are not in CI and tag version and version short
