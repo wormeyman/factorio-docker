@@ -32,19 +32,19 @@ else
     fi
   else
     # we are not in CI and tag version and version short
-    TAGS="$DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
+    TAGS="-t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
   fi
 
   if [[ -n ${EXTRA_TAG:-} ]]; then
     IFS=","
     for TAG in $EXTRA_TAG; do
-      TAGS="$TAGS -t $DOCKER_REPO:$EXTRA_TAG"
+      TAGS+=" -t $DOCKER_REPO:$EXTRA_TAG"
     done
   fi
 fi
 
 # shellcheck disable=SC2068
-docker build . -t ${TAGS[@]}
+eval docker build . ${TAGS[@]}
 docker images
 
 if [[ ${TRAVIS_BRANCH:-} ]]; then
