@@ -41,7 +41,8 @@ else
   fi
 fi
 
-docker build . -t "${TAGS[@]}"
+# shellcheck disable=SC2068
+docker build . -t ${TAGS[@]}
 docker images
 
 # only push when:
