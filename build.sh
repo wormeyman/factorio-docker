@@ -2,7 +2,7 @@
 set -eoux pipefail
 
 if [[ -z ${1:-} ]] && [[ -n ${CI:-} ]]; then
-  echo 'Usage: ./build.sh $VERSION_SHORT'
+  echo 'Usage: ./build.sh VERSION_SHORT'
   exit 1
 elif [[ $CI == true ]]; then
   VERSION_SHORT="$1"
