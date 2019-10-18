@@ -34,7 +34,10 @@ else
   fi
 
   if [[ -n ${EXTRA_TAG:-} ]]; then
-    TAGS="$TAGS -t $DOCKER_REPO:$EXTRA_TAG"
+    IFS=","
+    for TAG in $EXTRA_TAG; do
+      TAGS="$TAGS -t $DOCKER_REPO:$EXTRA_TAG"
+    done
   fi
 fi
 
@@ -70,7 +73,10 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRA
   fi
 
   if [[ -n ${EXTRA_TAG:-} ]]; then
-    docker push "$DOCKER_REPO:$EXTRA_TAG"
+    IFS=","
+    for TAG in $EXTRA_TAG; do
+      docker push "$DOCKER_REPO:$TAG"
+    done
   fi
 
   curl -X POST https://hooks.microbadger.com/images/factoriotools/factorio/TmmKGNp8jKcFqZvcJhTCIAJVluw=
