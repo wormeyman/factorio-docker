@@ -38,7 +38,7 @@ else
   if [[ -n ${EXTRA_TAG:-} ]]; then
     IFS=","
     for TAG in $EXTRA_TAG; do
-      TAGS+=" -t $DOCKER_REPO:$EXTRA_TAG"
+      TAGS+=" -t $DOCKER_REPO:$TAG"
     done
   fi
 fi
@@ -55,7 +55,7 @@ fi
 # latest changes where made in the folder corosponding to the version we build, we are on master and don#t build a PR.
 if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ $TRAVIS_BRANCH == master ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
   # we build a tag and we are not on master
-  [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
+  [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_PULL_REQUEST_BRANCH:-} == "" ]] ||
   # we are not in CI
   [[ -z ${CI:-} ]]; then
 

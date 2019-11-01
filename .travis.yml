@@ -16,8 +16,7 @@ jobs:
         - bash -c 'shopt -s globstar; shellcheck **/*.sh'
     - &build
       stage: build
-      # set EXTRA_TAG to latest,stable when no more experimental versions for 0.17 come out
-      env: VERSION_SHORT=0.17 EXTRA_TAG=latest
+      env: VERSION_SHORT=0.17 EXTRA_TAG=latest,stable
       script:
         - ./build.sh $VERSION_SHORT
     - <<: *build
