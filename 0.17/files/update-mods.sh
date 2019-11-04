@@ -58,7 +58,7 @@ update_mod()
 
   if [[ $HTTP_STATUS != 200 ]]; then
     print_failure "  Download failed: Code $HTTP_STATUS."
-    rm "$MOD_DIR/$MOD_FILENAME"
+    rm -f "$MOD_DIR/$MOD_FILENAME"
     return 1
   fi
 
@@ -69,7 +69,7 @@ update_mod()
 
   if ! [[ $(sha1sum "$MOD_DIR/$MOD_FILENAME") =~ $MOD_SHA1 ]]; then
     print_failure "  SHA1 mismatch!"
-    rm "$MOD_DIR/$MOD_FILENAME"
+    rm -f "$MOD_DIR/$MOD_FILENAME"
     return 1
   fi
 
@@ -78,7 +78,7 @@ update_mod()
   for file in "$MOD_DIR/${MOD_NAME}_"*".zip"; do # wildcard does usually not work in quotes: https://unix.stackexchange.com/a/67761
     if [[ $file != $MOD_DIR/$MOD_FILENAME ]]; then
       print_success "  Deleting old version: $file"
-      rm "$file"
+      rm -f "$file"
     fi
   done
 
