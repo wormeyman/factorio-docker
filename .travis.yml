@@ -16,7 +16,7 @@ jobs:
         - bash -c 'shopt -s globstar; shellcheck **/*.sh'
     - &build
       stage: build
-      env: VERSION_SHORT=0.17 EXTRA_TAG=latest,stable
+      env: VERSION_SHORT=0.17 EXTRA_TAG=latest STABLE=0.17.74
       script:
         - ./build.sh $VERSION_SHORT
     - <<: *build
