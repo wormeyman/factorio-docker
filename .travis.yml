@@ -22,7 +22,7 @@ jobs:
 
     - &build
       stage: build
-      env: VERSION_SHORT=0.17 EXTRA_TAG=latest STABLE=0.17.74
+      env: VERSION_SHORT=0.17 EXTRA_TAG=latest STABLE=0.17.79
       script:
         - ./build.sh $VERSION_SHORT
     - <<: *build
