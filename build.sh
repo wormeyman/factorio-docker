@@ -43,7 +43,7 @@ else
   fi
 
   if [[ ${STABLE:-} == "$VERSION" ]]; then
-    TAGS+=" -T $DOCKER_REPO:stable"
+    TAGS+=" -t $DOCKER_REPO:stable"
   fi
 fi
 
