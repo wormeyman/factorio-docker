@@ -16,12 +16,8 @@ jobs:
         - git ls-files --exclude='*Dockerfile' --ignored | xargs --max-lines=1 -I{} sh -c 'docker run --rm -i -v ${PWD}/.hadolint.yaml:/.hadolint.yaml hadolint/hadolint < "$1"' -- {}
         - bash -c 'shopt -s globstar; shellcheck **/*.sh'
 
-    - stage: Update Docker HUB description
-      if: branch = master
-      script: docker run -v $PWD:/workspace -e DOCKERHUB_USERNAME=$DOCKER_USERNAME -e DOCKERHUB_PASSWORD=$DOCKER_PASSWORD -e DOCKERHUB_REPOSITORY='factoriotools/factorio' -e README_FILEPATH='/workspace/README.md' peterevans/dockerhub-description:2.1.0
-
     - &build
-      stage: build
+      stage: Build & update Docker HUB description
       env: VERSION_SHORT=0.17 EXTRA_TAG=latest STABLE=0.17.79
       script:
         - ./build.sh $VERSION_SHORT
@@ -31,3 +27,5 @@ jobs:
       env: VERSION_SHORT=0.15
     - <<: *build
       env: VERSION_SHORT=0.14
+    - if: branch = master
+      script: docker run -v $PWD:/workspace -e DOCKERHUB_USERNAME=$DOCKER_USERNAME -e DOCKERHUB_PASSWORD=$DOCKER_PASSWORD -e DOCKERHUB_REPOSITORY='factoriotools/factorio' -e README_FILEPATH='/workspace/README.md' peterevans/dockerhub-description:2.1.0
