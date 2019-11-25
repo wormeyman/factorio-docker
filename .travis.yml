@@ -29,4 +29,5 @@ jobs:
       env: VERSION_SHORT=0.14
     - <<: *build
       if: branch = master
+      env:
       script: docker run -v $PWD:/workspace -e DOCKERHUB_USERNAME=$DOCKER_USERNAME -e DOCKERHUB_PASSWORD=$DOCKER_PASSWORD -e DOCKERHUB_REPOSITORY='factoriotools/factorio' -e README_FILEPATH='/workspace/README.md' peterevans/dockerhub-description:2.1.0
