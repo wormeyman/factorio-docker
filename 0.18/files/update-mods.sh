@@ -45,7 +45,7 @@ update_mod()
 
   if [[ $MOD_FILENAME == null ]]; then
     print_failure "  Not compatible with version"
-    return 1
+    return 0
   fi
 
   if [[ -f $MOD_DIR/$MOD_FILENAME ]]; then
