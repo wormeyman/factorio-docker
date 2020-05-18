@@ -30,10 +30,12 @@ RUN set -ox pipefail \
     && tar xf "$archive" --directory /opt \
     && chmod ugo=rwx /opt/factorio \
     && rm "$archive" \
-    && ln -s "$SAVES" /opt/factorio/saves \
-    && ln -s "$MODS" /opt/factorio/mods \
-    && ln -s "$SCENARIOS" /opt/factorio/scenarios \
-    && ln -s "$SCRIPTOUTPUT" /opt/factorio/script-output \
+    && mkdir -p /opt/factorio/config/ \
+    && printf "\
+[path]\n\
+read-data=__PATH__executable__/../../data\n\
+write-data=/factorio\n\
+" >> /opt/factorio/config/config.ini \
     && addgroup -g "$PGID" -S "$GROUP" \
     && adduser -u "$PUID" -G "$GROUP" -s /bin/sh -SDH "$USER" \
     && chown -R "$USER":"$GROUP" /opt/factorio /factorio
