@@ -60,11 +60,9 @@ if [[ ${TRAVIS_BRANCH:-} ]]; then
 fi
 
 # only push when:
-# latest changes where made in the folder corresponding to the version we build, we are on master and don't build a PR.
-if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ ${TRAVIS_BRANCH:-} == master ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
-  # we build a tag and we are not on master
-  [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_PULL_REQUEST_BRANCH:-} == "" ]] ||
-  # we are not in CI
+# or we build a tag and we don't build a PR
+if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_PULL_REQUEST_BRANCH:-} == "" ]] ||
+  # or we are not in CI
   [[ -z ${CI:-} ]]; then
 
   if [[ ${CI:-} == true ]]; then
