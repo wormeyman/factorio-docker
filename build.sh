@@ -78,7 +78,7 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ ${TR
 
   # push an incremental tag
   if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]]; then
-    docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
+    docker push "$DOCKER_REPO:$VERSION"
   fi
 
   if [[ -n ${TRAVIS_TAG:-} ]] || [[ -z ${CI:-} ]]; then
