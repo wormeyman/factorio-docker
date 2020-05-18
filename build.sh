@@ -27,7 +27,7 @@ else
     elif [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]]; then
       TAGS="-t $DOCKER_REPO:$TRAVIS_BRANCH -t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
     # we build a other branch than master and exclude dependabot branches from tags cause the / is not supported by docker
-    elif [[ -n ${TRAVIS_BRANCH:-} && $TRAVIS_BRANCH =~ "/" ]]; then
+    elif [[ -n ${TRAVIS_BRANCH:-} && ! $TRAVIS_BRANCH =~ "/" ]]; then
       TAGS="-t $DOCKER_REPO:$TRAVIS_BRANCH"
     fi
   else
@@ -68,7 +68,7 @@ if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" && ${TRAVIS_PULL_REQUEST_BRANCH:-
   fi
 
   # push a tag on a branch other than master except dependabot branches cause docker does not support /
-  if [[ -n ${TRAVIS_BRANCH:-} && $VERSION != "${TRAVIS_BRANCH_VERSION:-}" && ${TRAVIS_BRANCH:-} != "master" && ${TRAVIS_BRANCH:-} =~ "/" ]]; then
+  if [[ -n ${TRAVIS_BRANCH:-} && $VERSION != "${TRAVIS_BRANCH_VERSION:-}" && ${TRAVIS_BRANCH:-} != "master" && ! ${TRAVIS_BRANCH:-} =~ "/" ]]; then
     docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
