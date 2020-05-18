@@ -75,7 +75,7 @@ if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" && ${TRAVIS_PULL_REQUEST_BRANCH:-
   # push an incremental tag
   # eg 0.18.24-1
   if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]]; then
-    docker push "$DOCKER_REPO:$VERSION"
+    docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
   fi
 
   # only push on tags or when manually running the script
