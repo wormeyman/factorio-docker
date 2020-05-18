@@ -53,12 +53,14 @@ fi
 eval docker build . ${TAGS[@]}
 docker images
 
+# remove -1 from incremental tag
+# eg before: 0.18.24-1, after 0.18.24
 if [[ ${TRAVIS_BRANCH:-} ]]; then
   TRAVIS_BRANCH_VERSION=${TRAVIS_BRANCH%-*}
 fi
 
 # only push when:
-# latest changes where made in the folder corosponding to the version we build, we are on master and don#t build a PR.
+# latest changes where made in the folder corresponding to the version we build, we are on master and don't build a PR.
 if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ ${TRAVIS_BRANCH:-} == master ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "" ]] ||
   # we build a tag and we are not on master
   [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_PULL_REQUEST_BRANCH:-} == "" ]] ||
@@ -77,10 +79,12 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ ${TR
   #  fi
 
   # push an incremental tag
+  # eg 0.18.24-1
   if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]]; then
     docker push "$DOCKER_REPO:$VERSION"
   fi
 
+  # only push on tags or when manually running the script
   if [[ -n ${TRAVIS_TAG:-} ]] || [[ -z ${CI:-} ]]; then
     docker push "$DOCKER_REPO:$VERSION"
     docker push "$DOCKER_REPO:$VERSION_SHORT"
