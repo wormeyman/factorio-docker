@@ -21,7 +21,7 @@ if [[ ${TRAVIS_PULL_REQUEST:-} == true ]]; then
 else
   if [[ -n ${CI:-} ]]; then
     # we are either on master or on a tag build
-    if [[ $TRAVIS_BRANCH == master ]] || [[ $TRAVIS_BRANCH == "$VERSION" ]]; then
+    if [[ ${TRAVIS_BRANCH:-} == master ]] || [[ ${TRAVIS_BRANCH:-} == "$VERSION" ]]; then
       TAGS="-t $DOCKER_REPO:$VERSION -t $DOCKER_REPO:$VERSION_SHORT"
     # we are on an incremental build of a tag
     elif [[ $VERSION == "${TRAVIS_BRANCH%-*}" ]]; then
