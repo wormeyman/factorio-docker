@@ -70,9 +70,11 @@ if [[ $(dirname "$(git diff --name-only HEAD^)") =~ $VERSION_SHORT ]] && [[ ${TR
   fi
 
   # push a tag on a branch other than master
-  if [[ -n ${TRAVIS_BRANCH:-} ]] && [[ $VERSION != "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_BRANCH:-} != "master" ]]; then
-    docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
-  fi
+  # disabled for now cause it breaks Travis CI builds of dependabot
+  # https://travis-ci.org/github/factoriotools/factorio-docker/jobs/688176474#L182
+  #  if [[ -n ${TRAVIS_BRANCH:-} ]] && [[ $VERSION != "${TRAVIS_BRANCH_VERSION:-}" ]] && [[ ${TRAVIS_BRANCH:-} != "master" ]]; then
+  #    docker push "$DOCKER_REPO:$TRAVIS_BRANCH"
+  #  fi
 
   # push an incremental tag
   if [[ $VERSION == "${TRAVIS_BRANCH_VERSION:-}" ]]; then
