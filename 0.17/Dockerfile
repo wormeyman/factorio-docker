@@ -19,6 +19,7 @@ ENV PORT=34197 \
     PUID="$PUID" \
     PGID="$PGID"
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN set -ox pipefail \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
     && mkdir -p /opt /factorio \
