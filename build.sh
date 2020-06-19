@@ -48,7 +48,7 @@ else
 fi
 
 # shellcheck disable=SC2068
-eval docker build . ${TAGS[@]}
+eval docker build . ${TAGS[@]:-}
 docker images
 
 # remove -1 from incremental tag
