@@ -17,11 +17,13 @@ jobs:
 
     - &build
       stage: Build & update Docker HUB description
-      env: VERSION_SHORT=0.18 EXTRA_TAG=latest
+      env: VERSION_SHORT=1.0 EXTRA_TAG=latest,stable
       script:
         - ./build.sh $VERSION_SHORT
     - <<: *build
-      env: VERSION_SHORT=0.17 EXTRA_TAG=stable
+      env: VERSION_SHORT=0.18
+    - <<: *build
+      env: VERSION_SHORT=0.17
     - <<: *build
       env: VERSION_SHORT=0.16
     - <<: *build
