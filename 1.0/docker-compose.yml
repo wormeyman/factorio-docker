@@ -13,3 +13,4 @@ services:
 #      - UPDATE_MODS_ON_START=true
 #      - USERNAME=FactorioUsername
 #      - TOKEN=FactorioToken
+#      - PORT=34198

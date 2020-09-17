@@ -312,7 +312,7 @@ sudo docker-compose up -d
 
 ### Ports
 
-* `34197/udp` - Game server (required).
+* `34197/udp` - Game server (required). This can be changed with the `PORT` environment variable.
 * `27015/tcp` - RCON (optional).
 
 ## LAN Games
