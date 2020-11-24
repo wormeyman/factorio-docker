@@ -17,9 +17,11 @@ jobs:
 
     - &build
       stage: Build & update Docker HUB description
-      env: VERSION_SHORT=1.0 EXTRA_TAG=latest,stable
+      env: VERSION_SHORT=1.1 EXTRA_TAG=latest,stable
       script:
         - ./build.sh $VERSION_SHORT
+    - <<: *build
+      env: VERSION_SHORT=1.0
     - <<: *build
       env: VERSION_SHORT=0.18
     - <<: *build
@@ -32,5 +34,4 @@ jobs:
       env: VERSION_SHORT=0.14
     - <<: *build
       if: branch = master AND type != pull_request
-      env:
       script: DOCKERHUB_USERNAME=$DOCKER_USERNAME DOCKERHUB_PASSWORD=$DOCKER_PASSWORD DOCKERHUB_REPOSITORY='factoriotools/factorio' README_FILEPATH='./README.md' ./update-dockerhub-description.sh
