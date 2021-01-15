@@ -47,6 +47,11 @@ else
   fi
 fi
 
+# Travis gets rate limited by Docker HUB.
+if [[ ${CI:-} == true && -n $DOCKER_PASSWORD && -n $DOCKER_USERNAME ]]; then
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+fi
+
 # shellcheck disable=SC2068
 eval docker build . ${TAGS[@]:-}
 docker images
