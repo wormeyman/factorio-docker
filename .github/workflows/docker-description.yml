@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: description 
-        run: |
-          DOCKERHUB_USERNAME=$DOCKER_USERNAME DOCKERHUB_PASSWORD=$DOCKER_PASSWORD DOCKERHUB_REPOSITORY='factoriotools/factorio' README_FILEPATH='./README.md' ./update-dockerhub-description.sh
+   	  - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2.4.1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: peterevans/dockerhub-description
