@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: build 
         env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           VERSION_SHORT: ${{ matrix.version }}
         run: |
           ./build.sh ${{ matrix.version }}
@@ -27,6 +29,8 @@ jobs:
         uses: actions/checkout@v2
       - name: build 
         env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           EXTRA_TAG: stable
           VERSION_SHORT: 1.0
         run: |
@@ -39,6 +43,8 @@ jobs:
         uses: actions/checkout@v2
       - name: build 
         env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           EXTRA_TAG: latest
           VERSION_SHORT: 1.1
         run: |

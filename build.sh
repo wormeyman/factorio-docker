@@ -50,7 +50,7 @@ else
 fi
 
 # Travis gets rate limited by Docker HUB.
-if [[ ${CI:-} == true && -n $DOCKER_PASSWORD && -n $DOCKER_USERNAME ]]; then
+if [[ ${CI:-} == true && -n ${DOCKER_PASSWORD:-} && -n ${DOCKER_USERNAME:-} ]]; then
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 fi
 
