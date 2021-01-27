@@ -16,7 +16,7 @@ cd "$VERSION_SHORT" || exit 1
 VERSION=$(grep -oP '[0-9]+\.[0-9]+\.[0-9]+' Dockerfile | head -1)
 DOCKER_REPO=factoriotools/factorio
 
-BRANCH=${GITHUB_REF#refs/heads/}
+BRANCH=${GITHUB_REF#refs/*/}
 
 if [[ -n ${GITHUB_BASE_REF:-} ]]; then
   TAGS="$DOCKER_REPO:$GITHUB_BASE_REF"
