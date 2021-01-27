@@ -86,7 +86,7 @@ if [[ $VERSION == "${BRANCH_VERSION:-}" && ${GITHUB_BASE_REF:-} == "" ]] ||
   fi
 
   # only push on tags or when manually running the script
-  if [[ -n ${GITHUB_BASE_REF:-} || -z ${CI:-} ]]; then
+  if [[ -n ${BRANCH_VERSION:-} || -z ${CI:-} ]]; then
     docker push "$DOCKER_REPO:$VERSION"
     docker push "$DOCKER_REPO:$VERSION_SHORT"
   fi
