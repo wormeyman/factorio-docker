@@ -34,7 +34,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           EXTRA_TAG: stable,latest
-          VERSION_SHORT: "1.0"
+          VERSION_SHORT: "1.1"
         run: |
           ./build.sh $VERSION_SHORT
 
@@ -48,6 +48,6 @@ jobs:
   #         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   #         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   #         EXTRA_TAG: latest
-  #         VERSION_SHORT: "1.1"
+  #         VERSION_SHORT: "1.2"
   #       run: |
   #         ./build.sh $VERSION_SHORT
