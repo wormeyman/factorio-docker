@@ -19,7 +19,7 @@ DOCKER_REPO=factoriotools/factorio
 BRANCH=${GITHUB_REF#refs/*/}
 
 if [[ -n ${GITHUB_BASE_REF:-} ]]; then
-  TAGS="$DOCKER_REPO:$GITHUB_BASE_REF"
+  TAGS="-t $DOCKER_REPO:$GITHUB_BASE_REF"
 else
   if [[ -n ${CI:-} ]]; then
     # we are either on master or on a tag build
