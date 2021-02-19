@@ -380,7 +380,7 @@ Use the `PORT` environment variable to start the server on the a different port,
 * [DBendit](https://github.com/DBendit/docker_factorio_server) - Coded admin list, ban list support and contributed version updates
 * [Zopanix](https://github.com/zopanix/docker_factorio_server) - Original Author
 * [Rfvgyhn](https://github.com/Rfvgyhn/docker-factorio) - Coded randomly generated RCON password
-* [gnomus](https://github.com/gnomus/docker_factorio_server) - Coded wite listing support
+* [gnomus](https://github.com/gnomus/docker_factorio_server) - Coded white listing support
 * [bplein](https://github.com/bplein/docker_factorio_server) - Coded scenario support
 * [jaredledvina](https://github.com/jaredledvina/docker_factorio_server) - Contributed version updates
 * [carlbennett](https://github.com/carlbennett) - Contributed version updates and bugfixes
