@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ "1.0", "0.18", "0.17", "0.16", "0.15", "0.14" ]
+        version: [ "1.0", "0.17", "0.16", "0.15", "0.14" ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
