@@ -101,6 +101,4 @@ if [[ $VERSION == "${BRANCH_VERSION:-}" && ${GITHUB_BASE_REF:-} == "" ]] ||
   if [[ ${STABLE:-} == "$VERSION" ]]; then
     docker push "$DOCKER_REPO:stable"
   fi
-
-  curl -X POST https://hooks.microbadger.com/images/factoriotools/factorio/TmmKGNp8jKcFqZvcJhTCIAJVluw=
 fi
