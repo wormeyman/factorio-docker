@@ -2,7 +2,7 @@
 
 [中文](./README_zh_CN.md) 
 
-* `1.1.36`, `1.1`, `latest`, `stable` [(1.1/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/1.1/Dockerfile)
+* `1.1.38`, `1.1`, `latest`, `stable` [(1.1/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/1.1/Dockerfile)
 * `1.0.0`, `1.0` [(1.0/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/1.0/Dockerfile)
 * `0.18.47`, `0.18` [(0.18/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.18/Dockerfile)
 * `0.17.79`, `0.17` [(0.17/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.17/Dockerfile)
