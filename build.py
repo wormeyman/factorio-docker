@@ -7,21 +7,12 @@ import shutil
 import sys
 import tempfile
 
-from jinja2 import Environment, FileSystemLoader
-
-jinja_env = Environment(
-    loader=FileSystemLoader('templates')
-)
-
-
-def build_dockerfile(sha1, version, tags):
+def build_dockerfile(sha256, version, tags):
     build_dir = tempfile.mktemp()
     shutil.copytree("docker", build_dir)
-    template = jinja_env.get_template("Dockerfile.jinja2")
-    dockerfile_content = template.render(sha1=sha1, version=version)
-    with open(os.path.join(build_dir, "Dockerfile"), "w") as dockerfile:
-        dockerfile.write(dockerfile_content)
-    build_command = ["docker", "build", "."]
+
+    build_command = ["docker", "build", "--build-arg", f"VERSION={version}",
+                     "--build-arg", f"SHA256={sha256}", "."]
     for tag in tags:
         build_command.extend(["-t", f"factoriotools/factorio:{tag}"])
     try:
@@ -52,9 +43,9 @@ def main(push_tags=False):
         login()
 
     for version, buildinfo in builddata.items():
-        sha1 = buildinfo["sha1"]
+        sha256 = buildinfo["sha256"]
         tags = buildinfo["tags"]
-        build_dockerfile(sha1, version, tags)
+        build_dockerfile(sha256, version, tags)
         if not push_tags:
             continue
         for tag in tags:
