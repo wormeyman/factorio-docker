@@ -3,14 +3,17 @@
 [中文](./README_zh_CN.md)
 
 <!-- start autogeneration tags -->
-* `1.1.39`, `1.1`, `latest`, `stable` [(1.1/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/1.1/Dockerfile)
-* `1.0.0`, `1.0` [(1.0/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/1.0/Dockerfile)
-* `0.18.47`, `0.18` [(0.18/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.18/Dockerfile)
-* `0.17.79`, `0.17` [(0.17/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.17/Dockerfile)
-* `0.16.51`, `0.16` [(0.16/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.16/Dockerfile)
-* `0.15.40`, `0.15` [(0.15/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.15/Dockerfile)
-* `0.14.23`, `0.14` [(0.14/Dockerfile)](https://github.com/factoriotools/factorio-docker/blob/master/0.14/Dockerfile)
-* <!-- end autogeneration tags -->
+* `1.1.39`, `1`, `1.1`, `latest`
+* `1.1.38`, `stable`
+* `1.0.0`, `1.0`
+* `0.18.47`, `0`, `0.18`
+* `0.17.79`, `0.17`
+* `0.16.51`, `0.16`
+* `0.15.40`, `0.15`
+* `0.14.23`, `0.14`
+* `0.13.20`, `0.13`
+* `0.12.35`, `0.12`
+<!-- end autogeneration tags -->
 
 ## Tag descriptions
 
