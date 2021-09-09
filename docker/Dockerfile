@@ -13,8 +13,8 @@ ARG SHA256
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
-    VERSION=${VERSION:?} \
-    SHA256=${SHA256:?} \
+    VERSION=${VERSION} \
+    SHA256=${SHA256} \
     SAVES=/factorio/saves \
     CONFIG=/factorio/config \
     MODS=/factorio/mods \
@@ -25,6 +25,14 @@ ENV PORT=34197 \
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN set -ox pipefail \
+    && if [[ "${VERSION}" == "" ]]; then \
+        echo "build-arg VERSION is required" \
+        && exit 1; \
+    fi \
+    && if [[ "${SHA256}" == "" ]]; then \
+        echo "build-arg SHA256 is required" \
+        && exit 1; \
+    fi \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
     && mkdir -p /opt /factorio \
     && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec \

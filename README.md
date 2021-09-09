@@ -304,16 +304,19 @@ The files in this volume should be owned by the factorio user, uid 845.
 
 [Docker Compose](https://docs.docker.com/compose/install/) is an easy way to run Docker containers.
 
-First get a [docker-compose.yml](https://github.com/factoriotools/factorio-docker/blob/master/0.17/docker-compose.yml) file. To get it from this repository:
+* docker-engine >= 1.10.0 is required
+* docker-compose >=1.6.0 is required
+
+First get a [docker-compose.yml](https://github.com/factoriotools/factorio-docker/blob/master/docker/docker-compose.yml) file. To get it from this repository:
 
 ```shell
 git clone https://github.com/factoriotools/factorio-docker.git
-cd docker_factorio_server/0.17
+cd factorio-docker/docker
 ```
 
 Or make your own:
 
-```shell
+```yaml
 version: '2'
 services:
   factorio:
@@ -342,7 +345,7 @@ sudo docker-compose up -d
 
 Ensure the `lan` setting in server-settings.json is `true`.
 
-```shell
+```json
   "visibility":
   {
     "public": false,

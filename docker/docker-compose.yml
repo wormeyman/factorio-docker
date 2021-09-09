@@ -1,7 +1,13 @@
 version: '2'
 services:
   factorio:
-    build: .
+    build:
+      context: .
+      args:
+      # Check buildinfo.json for supported versions and SHAs
+      # https://github.com/factoriotools/factorio-docker/blob/master/buildinfo.json
+      - VERSION=1.1.39
+      - SHA256=5528b8e23ac5d3a13e3328a0c64fee71f4a321792afe7b2fe46f95e62b7ed119
     ports:
      - "34197:34197/udp"
      - "27015:27015/tcp"
