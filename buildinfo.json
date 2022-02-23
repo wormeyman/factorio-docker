@@ -52,10 +52,16 @@
     "sha256": "610fdee2ed22775080b7c0c7acaa7ab75835b84df7a96d7ec70d5a31a0282aa3",
     "tags": [
       "1.1.53",
+      "stable"
+    ]
+  },
+  "1.1.54": {
+    "sha256": "cee5191d9a8944e7eed8c40e1219d8430d3b73dc05d24ef41cc7e9693cc2ff3e",
+    "tags": [
+      "1.1.54",
       "1",
       "1.1",
-      "latest",
-      "stable"
+      "latest"
     ]
   }
 }
