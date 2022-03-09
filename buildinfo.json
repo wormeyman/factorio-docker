@@ -55,10 +55,10 @@
       "stable"
     ]
   },
-  "1.1.55": {
-    "sha256": "dc0779a9eb7e78c8b5f5625f0188e7a4bebc60a4aebdb0f04121cfe1d52adda2",
+  "1.1.56": {
+    "sha256": "c8acb03e49fac0ce4befe4d088927f271eed15e0801b22911fb75daa53dc8e9c",
     "tags": [
-      "1.1.55",
+      "1.1.56",
       "1",
       "1.1",
       "latest"
